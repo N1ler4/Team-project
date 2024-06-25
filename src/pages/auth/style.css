@@ -14,6 +14,7 @@ body {
   height: 100vh;
   margin: -20px 0 50px;
   margin-top: 20px;
+  overflow-y: hidden;
 }
 
 h1 {
@@ -83,6 +84,14 @@ a {
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
+  border-radius: 100px;
+  margin-top: 15px;
+}
+.form-container h1{
+  width: 150px;
+}
+.form-container button{
+  width: auto;
 }
 
 button {
@@ -250,11 +259,13 @@ button.ghost {
     width: 400px;
   }
   p {
-    font-size: 14px;
+    font-size: 8px;
   }
   button {
     font-size: 12px;
-    padding: 2px 35px;
+    padding: 2px 20px;
+    width: 140px;
+    height: 25px;
   }
   .form-container input {
     width: 180px;
@@ -274,7 +285,7 @@ button.ghost {
   }
   button {
     font-size: 14px;
-    padding: 10px 40px;
+    padding: 8px 25px;
   }
   .form-container input {
     width: 100%;

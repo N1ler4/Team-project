@@ -77,7 +77,7 @@ const Index = () => {
   };
 
   return (
-    <div className="">
+    <div className="body">
       <div className="container" id="container" ref={containerRef}>
         <div className="form-container sign-up-container">
           <Formik
