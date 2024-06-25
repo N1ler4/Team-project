@@ -9,6 +9,7 @@ const useAuthStore = create(() => ({
       if (response.status === 200) {
         console.log(response);
         saveDataToCookie("token", response?.data?.access_token);
+        saveDataToCookie("refresh-token", response?.data?.refresh_token);
         return response;
       }
     } catch (err) {
@@ -28,7 +29,7 @@ const useAuthStore = create(() => ({
   verify: async(code , email)=>{
     try{
       const res = await http.get(`/users/verify?code=${code}&email=${email}`);
-      if(res.status === 200){
+      if(res.status === 201){
         return res;
       }
     }catch(err){

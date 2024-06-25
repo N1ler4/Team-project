@@ -6,6 +6,7 @@ import { ReusableModal } from "@modals";
 import "./style.css";
 import { Input, Button } from "antd";
 import { useNavigate } from "react-router-dom";
+import { Forgot } from "@ui";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -62,8 +63,8 @@ const Index = () => {
   const handleVerify = async (values) => {
     try {
       const res = await verify(values.code, emailCode);
-      if (res.status === 200) {
-        setIsModalOpen(false);
+      if (res.status === 201) {
+        handleCancel();
         handleSignInClick();
       }
     } catch (error) {
@@ -88,7 +89,7 @@ const Index = () => {
               <Form>
                 <h1 className="mb-4">Create Account</h1>
 
-                <Field type="text" name="full_name" placeholder="Name" />
+                <Field type="text" name="full_name" placeholder="Name" as={Input} size="small"/>
                 <ErrorMessage
                   name="full_name"
                   component="div"
@@ -150,6 +151,7 @@ const Index = () => {
                   className="text-red-700"
                 />
                 <button type="submit">Sign In</button>
+                <Forgot/>
               </Form>
             )}
           </Formik>

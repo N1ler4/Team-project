@@ -222,3 +222,104 @@ button.ghost {
   letter-spacing: 15px;
   align-items: center;
 }
+
+/* Mobile devices (up to 379px) */
+@media (max-width: 379px) {
+  .container {
+    width: 300px;
+  }
+  p {
+    font-size: 10px;
+  }
+  button {
+    font-size: 10px;
+    padding: 5px 25px;
+  }
+  .form-container input {
+    width: 120px;
+    height: 35px;
+  }
+  .form-container input::placeholder {
+    font-size: 12px;
+  }
+}
+
+/* Small mobile devices (380px to 600px) */
+@media (min-width: 380px) and (max-width: 600px) {
+  .container {
+    width: 400px;
+  }
+  p {
+    font-size: 14px;
+  }
+  button {
+    font-size: 12px;
+    padding: 2px 35px;
+  }
+  .form-container input {
+    width: 180px;
+    height: 35px;
+  }
+  .form-container input::placeholder {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .container {
+    width: 650px;
+  }
+  p {
+    font-size: 14px;
+  }
+  button {
+    font-size: 14px;
+    padding: 10px 40px;
+  }
+  .form-container input {
+    width: 100%;
+    height: 45px;
+  }
+  .form-container input::placeholder {
+    font-size: 16px;
+  }
+}
+
+/* Small laptops (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    width: 790px;
+  }
+  p {
+    font-size: 13px;
+  }
+  button {
+    font-size: 12px;
+    padding: 6px 30px;
+  }
+  .form-container input {
+    width: 100%;
+    height: 35px;
+  }
+  .form-container input::placeholder {
+    font-size: 15px;
+  }
+}
+
+/* Large laptops and desktops (1025px and above) */
+@media (min-width: 1025px) {
+  p {
+    font-size: 14px;
+  }
+  button {
+    font-size: 12px;
+    padding: 8px 30px;
+  }
+  .form-container input {
+    width: 100%;
+    height: 40px;
+  }
+  .form-container input::placeholder {
+    font-size: 15px;
+  }
+}
