@@ -27,7 +27,7 @@ export default function Index() {
   }, []);
 
   return (
-    <header className="container mx-auto px-4 py-3">
+    <header className="container mx-auto px-10 py-3">
       <nav className="flex justify-between items-center">
         <div className="flex gap-2 items-center">
           <img
