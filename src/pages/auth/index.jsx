@@ -65,7 +65,7 @@ const Index = () => {
       const res = await verify(values.code, emailCode);
       if (res.status === 201) {
         handleCancel();
-        handleSignInClick();
+        navigate("/");
       }
     } catch (error) {
       console.log(error);

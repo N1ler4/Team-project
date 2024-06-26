@@ -31,6 +31,9 @@ const useAuthStore = create(() => ({
     try{
       const res = await http.get(`/users/verify?code=${code}&email=${email}`);
       if(res.status === 201){
+        saveDataToCookie("token", res?.data?.access_token);
+        saveDataToCookie("refresh-token", res?.data?.refresh_token);
+        saveDataToCookie("id", res?.data?.id);
         return res;
       }
     }catch(err){
