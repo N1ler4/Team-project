@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.7",
     "@react-input/mask": "^1.2.5",
     "antd": "^5.18.3",
     "axios": "^1.7.2",
     "formik": "^2.4.6",
     "js-cookie": "^3.0.5",
+    "mdb-react-ui-kit": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",

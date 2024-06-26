@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+.body {
   font-family: "Montserrat", sans-serif;
   background: #f6f5f7;
   display: flex;
@@ -17,12 +17,12 @@ body {
   overflow-y: hidden;
 }
 
-h1 {
+.body h1 {
   font-weight: bold;
   margin: 0;
 }
 
-p {
+.p {
   font-size: 14px;
   font-weight: 100;
   line-height: 20px;
@@ -30,18 +30,18 @@ p {
   margin: 20px 0 30px;
 }
 
-span {
+.span {
   font-size: 12px;
 }
 
-a {
+.a {
   color: #333;
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
 }
 
-.container {
+.auth-container {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.2);
@@ -94,7 +94,7 @@ a {
   width: auto;
 }
 
-button {
+.button {
   border-radius: 20px;
   border: 1px solid #ff4b2b;
   background: #ff445c;
@@ -107,15 +107,15 @@ button {
   transition: transform 80ms ease-in;
 }
 
-button:active {
+.button:active {
   transform: scale(0.95);
 }
 
-button:focus {
+.button:focus {
   outline: none;
 }
 
-button.ghost {
+.button.ghost {
   background: transparent;
   border-color: #fff;
 }
@@ -188,34 +188,34 @@ button.ghost {
 }
 
 /* Move signin to right */
-.container.right-panel-active .sign-in-container {
+.auth-container.right-panel-active .sign-in-container {
   transform: translateY(100%);
 }
 
 /* Move overlay to left */
-.container.right-panel-active .overlay-container {
+.auth-container.right-panel-active .overlay-container {
   transform: translateX(-100%);
 }
 
 /* Bring signup over signin */
-.container.right-panel-active .sign-up-container {
+.auth-container.right-panel-active .sign-up-container {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
 }
 
 /* Move overlay back to right */
-.container.right-panel-active .overlay {
+.auth-container.right-panel-active .overlay {
   transform: translateX(50%);
 }
 
 /* Bring back the text to center */
-.container.right-panel-active .overlay-left {
+.auth-container.right-panel-active .overlay-left {
   transform: translateY(0);
 }
 
 /* Same effect for right */
-.container.right-panel-active .overlay-right {
+.auth-container.right-panel-active .overlay-right {
   transform: translateY(20%);
 }
 
@@ -237,10 +237,10 @@ button.ghost {
   .container {
     width: 300px;
   }
-  p {
+  .p {
     font-size: 10px;
   }
-  button {
+  .button {
     font-size: 10px;
     padding: 5px 25px;
   }
@@ -258,10 +258,10 @@ button.ghost {
   .container {
     width: 400px;
   }
-  p {
+  .p {
     font-size: 8px;
   }
-  button {
+  .button {
     font-size: 12px;
     padding: 2px 20px;
     width: 140px;
@@ -280,10 +280,10 @@ button.ghost {
   .container {
     width: 650px;
   }
-  p {
+  .p {
     font-size: 14px;
   }
-  button {
+  .button {
     font-size: 14px;
     padding: 8px 25px;
   }
@@ -301,10 +301,10 @@ button.ghost {
   .container {
     width: 790px;
   }
-  p {
+  .p {
     font-size: 13px;
   }
-  button {
+  .button {
     font-size: 12px;
     padding: 6px 30px;
   }
@@ -319,10 +319,10 @@ button.ghost {
 
 /* Large laptops and desktops (1025px and above) */
 @media (min-width: 1025px) {
-  p {
+  .p {
     font-size: 14px;
   }
-  button {
+  .button {
     font-size: 12px;
     padding: 8px 30px;
   }

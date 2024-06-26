@@ -10,6 +10,7 @@ const useAuthStore = create(() => ({
         console.log(response);
         saveDataToCookie("token", response?.data?.access_token);
         saveDataToCookie("refresh-token", response?.data?.refresh_token);
+        saveDataToCookie("id", response?.data?.id);
         return response;
       }
     } catch (err) {

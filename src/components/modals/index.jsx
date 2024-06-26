@@ -1,3 +1,3 @@
-import ReusableModal from "./custom-modal"
+import ReusableModal from "./custom-modal";
 
-export {ReusableModal}
+export { ReusableModal };

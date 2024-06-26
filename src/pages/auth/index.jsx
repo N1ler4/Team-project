@@ -53,7 +53,7 @@ const Index = () => {
     try {
       const res = await signin(values);
       if (res.status === 200) {
-        navigate("/main");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -78,7 +78,7 @@ const Index = () => {
 
   return (
     <div className="body">
-      <div className="container" id="container" ref={containerRef}>
+      <div className="auth-container" id="container" ref={containerRef}>
         <div className="form-container sign-up-container">
           <Formik
             initialValues={{ full_name: "", email: "", password: "" }}
@@ -87,7 +87,7 @@ const Index = () => {
           >
             {() => (
               <Form>
-                <h1 className="mb-4">Create Account</h1>
+                <h1 className="mb-4 h1">Create Account</h1>
 
                 <Field type="text" name="full_name" placeholder="Name" as={Input} size="small"/>
                 <ErrorMessage
@@ -107,7 +107,7 @@ const Index = () => {
                   component="div"
                   className="text-red-700"
                 />
-                <button type="submit">Sign Up</button>
+                <button type="submit" className="button">Sign Up</button>
               </Form>
             )}
           </Formik>
@@ -127,7 +127,7 @@ const Index = () => {
           >
             {() => (
               <Form>
-                <h1>Sign in</h1>
+                <h1 className="h1">Sign in</h1>
                 <Field
                   type="email"
                   name="email"
@@ -150,7 +150,7 @@ const Index = () => {
                   component="div"
                   className="text-red-700"
                 />
-                <button type="submit">Sign In</button>
+                <button type="submit" className="button">Sign In</button>
                 <Forgot/>
               </Form>
             )}
@@ -159,18 +159,18 @@ const Index = () => {
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>
+              <h1 className="h1">Welcome Back!</h1>
+              <p className="p">
                 To keep connected with us please login with your personal info
               </p>
-              <button className="ghost" id="signIn" onClick={handleSignInClick}>
+              <button className="ghost button" id="signIn" onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
             <div className="overlay-panel overlay-right">
-              <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button className="ghost" id="signUp" onClick={handleSignUpClick}>
+              <h1 className="h1">Hello, Friend!</h1>
+              <p className="p">Enter your personal details and start journey with us</p>
+              <button className="ghost button" id="signUp" onClick={handleSignUpClick}>
                 Sign Up
               </button>
             </div>

@@ -1,3 +1,5 @@
 import Forgot from "./forgot-password"
+import Header from "./header"
+import Menu from "./menu"
 
-export {Forgot}
+export {Forgot , Header , Menu}
