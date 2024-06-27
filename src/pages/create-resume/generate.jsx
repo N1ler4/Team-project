@@ -6,8 +6,13 @@ import useCreateStore from "../../store/create";
 import { Header } from "@ui";
 import { useNavigate } from "react-router-dom";
 
+
+const basic_redis_id = getDataFromCookie("basic-id");
+const main_redis_id = getDataFromCookie("main-id");
+const template = getDataFromCookie("type");
+
 const initialValues = {
-  basic_redis_id: "",
+  basic_redis_id: basic_redis_id,
   certificates: [
     {
       date: null,
@@ -29,10 +34,10 @@ const initialValues = {
       language: "",
     },
   ],
-  main_redis_id: "",
+  main_redis_id:main_redis_id,
   meta: {
     lang: "en",
-    template: "",
+    template: template,
   },
   skills: [
     {
@@ -43,18 +48,14 @@ const initialValues = {
   ],
 };
 
-const basic_redis_id = getDataFromCookie("basic-id");
-const main_redis_id = getDataFromCookie("main-id");
-const template = getDataFromCookie("type");
+
+console.log(basic_redis_id)
 
 const App = () => {
   const { FinalResume } = useCreateStore();
   const navigate = useNavigate()
 
   const onSubmit = async (values) => {
-    values.basic_redis_id = basic_redis_id;
-    values.main_redis_id = main_redis_id;
-    values.meta.template = template;
 
     try {
       const res = await FinalResume(values);
