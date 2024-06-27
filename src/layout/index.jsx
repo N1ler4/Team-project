@@ -6,13 +6,20 @@ import { saveDataToCookie, getDataFromCookie } from "@token-service";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useCreateStore from "../store/create";
-import { Button } from "antd";
+import { Button, Modal } from "antd";
 
 const IndexPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const { getUserData, deleteResume } = useCreateStore();
+
+  const handleDeleteModalCancel = () => {
+    setIsDeleteModalOpen(false);
+    setSelectedId(null);
+  };
 
   const checkToken = async () => {
     const token = await getDataFromCookie("token");
@@ -36,11 +43,12 @@ const IndexPage = () => {
     fetchData();
   }, [getUserData]);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async () => {
     try {
-      const res = await deleteResume(id);
+      const res = await deleteResume(selectedId);
       if (res.status === 200) {
-        setData((prevData) => prevData.filter((item) => item.id !== id));
+        setData((prevData) => prevData.filter((item) => item.id !== selectedId));
+        handleDeleteModalCancel();
       }
     } catch (err) {
       console.error("Error deleting resume:", err);
@@ -89,7 +97,13 @@ const IndexPage = () => {
         </div>
         <div className="mt-[40px]">
           <h1 className="text-[34px] text-center">My Template</h1>
-          <GlobalTable data={data} onDelete={handleDelete} />
+          <GlobalTable 
+            data={data} 
+            onDelete={(id) => {
+              setSelectedId(id);
+              setIsDeleteModalOpen(true);
+            }} 
+          />
         </div>
         <div className="grid justify-center mt-[70px]">
           <Button
@@ -98,11 +112,32 @@ const IndexPage = () => {
               backgroundColor: "#ff445c",
               borderColor: "#ff445c",
             }}
+            onClick={()=>navigate("/resume-list")}
           >
             View other people template
           </Button>
         </div>
       </div>
+      <Modal
+        title="Confirm Delete"
+        visible={isDeleteModalOpen}
+        onOk={handleDelete}
+        onCancel={handleDeleteModalCancel}
+        okText="Yes"
+        cancelText="No"
+        okButtonProps={{
+          style: { backgroundColor: "#F07448", borderColor: "#F07448" },
+        }}
+        cancelButtonProps={{
+          style: {
+            backgroundColor: "#F07448",
+            borderColor: "#F07448",
+            color: "white",
+          },
+        }}
+      >
+        <p>Are you sure you want to delete this user?</p>
+      </Modal>
     </>
   );
 };

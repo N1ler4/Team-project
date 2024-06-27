@@ -4,7 +4,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { Auth, Profile , BasicCreate , MainCreate , Generate} from "@pages";
+import { Auth, Profile , BasicCreate , MainCreate , Generate , ResumeList} from "@pages";
 import App from "../App";
 import Layout from "../layout";
 
@@ -18,6 +18,7 @@ export default function Router() {
         <Route path="/basic" element={<BasicCreate />} />
         <Route path="/main-create" element={<MainCreate/>}/>
         <Route path="/generate" element={<Generate/>}/>
+        <Route path="/resume-list" element={<ResumeList/>}/>
       </Route>
     )
   );

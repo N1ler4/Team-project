@@ -59,7 +59,17 @@ const useCreateStore = create(() => ({
   },
   deleteResume: async (id) => {
     try{
-      const res = await http.get(`/resumes/${id}`)
+      const res = await http.delete(`/resumes/{id}?id=${id}`)
+      if(res.status === 200) {
+        return res
+      }
+    }catch(err){
+      console.log(err)
+    }
+  },
+  getAllResume: async () => {
+    try{
+      const res = await http.get(`/resume/list`)
       if(res.status === 200) {
         return res
       }

@@ -14,16 +14,25 @@ const GlobalTable = ({ data, onDelete }) => {
       ),
     },
     {
+      title: "Job Title",
+      dataIndex: "job_title",
+      key: "job title",
+    },
+    {
       title: "Salary",
       dataIndex: "salary",
       key: "salary",
     },
     {
-      title: "Job Location",
+      title: "Job Type",
       dataIndex: "job_location",
       key: "job_location",
     },
-    {
+  ];
+
+  // Add Action column only if onDelete is provided
+  if (onDelete) {
+    columns.push({
       title: "Action",
       key: "action",
       render: (text, record) => (
@@ -31,8 +40,8 @@ const GlobalTable = ({ data, onDelete }) => {
           Delete
         </Button>
       ),
-    },
-  ];
+    });
+  }
 
   return (
     <div style={{ padding: "20px" }}>
