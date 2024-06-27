@@ -22,7 +22,11 @@ const validationSchema = Yup.object().shape({
   label: Yup.string().required("Required"),
   name: Yup.string().required("Required"),
   phone: Yup.string().required("Required"),
-  salary: Yup.number().required("Required").positive("Must be positive"),
+  salary: Yup.number()
+    .min(1, "Must be more than 1")
+    .max(1000000, "Must be less than 1000000")
+    .required("Required")
+    .positive("Must be positive"),
   summary: Yup.string().required("Required"),
   location: Yup.object().shape({
     city: Yup.string().required("Required"),
@@ -44,7 +48,6 @@ const MyForm = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
-    // Update the form values with the image URL
     values.image = img;
     const res = await basic(values);
     if (res.status === 200) {
@@ -223,6 +226,8 @@ const MyForm = () => {
                     <InputNumber
                       name="salary"
                       value={values.salary}
+                      min={1}
+                      max={1000000}
                       onChange={(value) =>
                         handleChange({ target: { name: "salary", value } })
                       }

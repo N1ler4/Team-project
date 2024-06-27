@@ -1,13 +1,15 @@
 import { create } from "zustand";
 import http from "@http";
 import { saveDataToCookie } from "@token-service";
+import axios from "axios";
 
 const useCreateStore = create(() => ({
   basic: async (payload) => {
     try {
       const response = await http.post(`/resume/basic`, payload);
       if (response.status === 200) {
-        saveDataToCookie("basic-id" , response.data.basic_redis_id);
+        saveDataToCookie("basic-id", response.data.basic_redis_id);
+        saveDataToCookie("main-id", response.data.main_redis_id);
         return response;
       }
     } catch (err) {
@@ -24,9 +26,9 @@ const useCreateStore = create(() => ({
       console.log(err);
     }
   },
-  updateUser: async (payload) => {
+  postToMain: async (payload) => {
     try {
-      const res = await http.put(`/users`, payload);
+      const res = await http.post(`/resume/main`, payload);
       if (res.status === 200) {
         return res;
       }
@@ -34,9 +36,10 @@ const useCreateStore = create(() => ({
       console.log(err);
     }
   },
-  uploadImg: async (payload) => {
+  FinalResume: async (payload) => {
     try {
-      const res = await http.post(`/media/user-photo`, payload);
+      const res = await http.post("/resume/generate", payload);
+
       if (res.status === 200) {
         return res;
       }
