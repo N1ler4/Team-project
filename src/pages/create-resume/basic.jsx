@@ -84,8 +84,8 @@ const MyForm = () => {
       <h1 className="text-[34px] text-center mt-[50px] mb-10">
         Please enter data about you
       </h1>
-      <div className="flex container mx-auto px-10 w-full  justify-start">
-        <div className="w-[20%] flex flex-col items-center">
+      <div className="flex container mx-auto px-10 w-full  justify-start flex-wrap">
+        <div className="w-[20%] flex flex-col items-center flex-wrap">
           {img ? (
             <img
               src={img}
@@ -178,7 +178,7 @@ const MyForm = () => {
                     />
                   </Form.Item>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-wrap">
                   <Form.Item
                     label="Job Type"
                     validateStatus={
@@ -253,7 +253,7 @@ const MyForm = () => {
                     className="w-full h-[80px]"
                   />
                 </Form.Item>
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-wrap">
                   <Form.Item
                     label="Location - City"
                     validateStatus={
@@ -324,7 +324,7 @@ const MyForm = () => {
                       {values.profiles.map((profile, index) => (
                         <div
                           key={index}
-                          className="flex justify-between items-center"
+                          className="flex justify-between items-center flex-wrap"
                         >
                           <Form.Item
                             label={`Profile ${index + 1} - Network`}

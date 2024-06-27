@@ -96,8 +96,8 @@ export default function Index() {
   return (
     <>
       <Header />
-      <div className="container mx-auto flex justify-center items-center w-[50%] h-[50vh] bg-white mt-[90px] rounded-2xl">
-        <div className="w-[40%] h-full border-r-2 flex flex-col justify-center items-center">
+      <div className="container mx-auto flex flex-wrap justify-center items-center w-[50%] h-[50vh] bg-white mt-[90px] rounded-2xl">
+        <div className="w-[40%] h-full border-r-2 flex-wrap flex flex-col justify-center items-center">
           <div>
             {user.image ? (
               <img
@@ -119,7 +119,7 @@ export default function Index() {
           </Upload>
         </div>
 
-        <div className="w-[60%] h-full py-5 px-5 flex flex-col justify-center items-center relative">
+        <div className="w-[60%] h-full py-5 px-5 flex flex-wrap flex-col justify-center items-center relative">
           <div>
             <Button
               type="primary"
@@ -140,7 +140,7 @@ export default function Index() {
               Delete
             </Button>
           </div>
-          <div className="flex w-full justify-between border-b-2 border-[#444] mb-5">
+          <div className="flex w-full justify-between border-b-2 border-[#444] mb-5 flex-wrap">
             <p>Name : </p>
             <p>{user.full_name}</p>
           </div>
@@ -174,7 +174,7 @@ export default function Index() {
           {({ handleSubmit }) => (
             <Form
               onSubmit={handleSubmit}
-              className="flex flex-col justify-center items-center"
+              className="flex flex-col justify-center items-center flex-wrap"
             >
               <Field
                 as={Input}

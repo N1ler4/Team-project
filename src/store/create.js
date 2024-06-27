@@ -47,6 +47,26 @@ const useCreateStore = create(() => ({
       console.log(err);
     }
   },
+  getUserData: async () => {
+    try{
+      const res = await http.get("/users/resume/list?limit=1&page=10")
+      if(res.status === 200) {
+        return res
+      }
+    }catch(err){
+      console.log(err)
+    }
+  },
+  deleteResume: async (id) => {
+    try{
+      const res = await http.get(`/resumes/${id}`)
+      if(res.status === 200) {
+        return res
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
 }));
 
 export default useCreateStore;

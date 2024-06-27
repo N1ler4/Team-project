@@ -85,7 +85,7 @@ export default function Index() {
           {({ handleSubmit }) => (
             <Form
               onSubmit={handleSubmit}
-              className="flex flex-col justify-center items-center"
+              className="flex flex-col justify-center items-center flex-wrap"
             >
               <Field
                 as={Input}

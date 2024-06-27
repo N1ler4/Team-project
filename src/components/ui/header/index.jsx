@@ -28,8 +28,8 @@ export default function Index() {
 
   return (
     <header className="container mx-auto px-10 py-3">
-      <nav className="flex justify-between items-center">
-        <div className="flex gap-2 items-center">
+      <nav className="flex justify-between items-center flex-wrap">
+        <div className="flex gap-2 items-center flex-wrap">
           <img
             src={logo}
             alt=""

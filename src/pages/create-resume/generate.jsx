@@ -85,6 +85,7 @@ const App = () => {
                       key={index}
                       style={{ display: "flex", marginBottom: 8 }}
                       align="baseline"
+                      className="flex-wrap"
                     >
                       <Field
                         name={`certificates[${index}].title`}
@@ -168,6 +169,7 @@ const App = () => {
                       key={index}
                       style={{ display: "flex", marginBottom: 8 }}
                       align="baseline"
+                      className="flex-wrap"
                     >
                       <Field
                         name={`languages[${index}].language`}

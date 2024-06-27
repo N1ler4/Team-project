@@ -130,7 +130,7 @@ const ExtendedForm = () => {
                     <div>
                       {values.education.map((edu, index) => (
                         <div key={index} className="mb-5">
-                          <div className="flex justify-between items-center">
+                          <div className="flex justify-between items-center flex-wrap ">
                             <Form.Item
                               label="Area"
                               validateStatus={
@@ -309,7 +309,7 @@ const ExtendedForm = () => {
                           </div>
                           <FieldArray name={`education[${index}].courses`}>
                             {({ remove: removeCourse, push: pushCourse }) => (
-                              <div className="flex gap-3">
+                              <div className="flex gap-3 flex-wrap">
                                 {edu.courses.map((course, cIndex) => (
                                   <div key={cIndex} className="mb-3">
                                     <Form.Item
@@ -415,7 +415,7 @@ const ExtendedForm = () => {
                     <div>
                       {values.projects.map((project, index) => (
                         <div key={index} className="mb-5">
-                          <div className="flex justify-between">
+                          <div className="flex justify-between flex-wrap">
                             <Form.Item
                               label="Name"
                               validateStatus={
@@ -524,7 +524,7 @@ const ExtendedForm = () => {
                     <div>
                       {values.work.map((work, index) => (
                         <div key={index} className="mb-5">
-                          <div className="flex justify-between">
+                          <div className="flex justify-between flex-wrap">
                             <Form.Item
                               label="Company"
                               validateStatus={
@@ -592,7 +592,7 @@ const ExtendedForm = () => {
                               />
                             </Form.Item>
                           </div>
-                          <div className="flex gap-5">
+                          <div className="flex gap-5 flex-wrap">
                             <Form.Item
                               label="Start Date"
                               validateStatus={
