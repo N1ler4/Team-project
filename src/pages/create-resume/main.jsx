@@ -1,12 +1,12 @@
 import React from "react";
-import { Form, Input, Button, DatePicker } from "antd";
+import { Form, Input, Button, DatePicker, message } from "antd";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 import TextArea from "antd/es/input/TextArea";
 import useCreateStore from "../../store/create";
 import { useNavigate } from "react-router-dom";
 import { getDataFromCookie } from "@token-service";
-import {Header} from "@ui"
+import { Header } from "@ui";
 import moment from "moment";
 
 const validationSchema = Yup.object().shape({
@@ -51,14 +51,19 @@ const ExtendedForm = () => {
   const handleSubmit = async (values) => {
     values.basic_redis_id = basic_redis_id;
     values.main_redis_id = main_redis_id;
-    console.log(values)
+    console.log(values);
     try {
       const res = await postToMain(values);
-      console.log(res)
+      console.log(res);
       if (res.status === 200) {
-        console.log(res)
-        navigate("/generate")
-        
+        console.log(res);
+        console.log(res.data.basic_redis_id)
+        if (res.data.main_redis_id === "" || res.data.basic_redis_id === "") {
+          message.error("Error! Please Submit again");
+          postToMain(values);
+        } else {
+          navigate("/generate");
+        }
       } else {
         console.error("Submission failed:", res.statusText);
       }
@@ -69,7 +74,7 @@ const ExtendedForm = () => {
 
   return (
     <>
-      <Header/>
+      <Header />
       <h1 className="text-[34px] text-center mt-[50px] mb-10">
         Please enter your extended data
       </h1>
