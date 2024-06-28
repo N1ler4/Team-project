@@ -59,7 +59,7 @@ const ExtendedForm = () => {
         console.log(res);
         console.log(res.data.basic_redis_id)
         if (res.data.main_redis_id === "" || res.data.basic_redis_id === "") {
-          message.error("Error! Please Submit again");
+          message.error("Error! Please Submit after 1 min");
           postToMain(values);
         } else {
           navigate("/generate");
