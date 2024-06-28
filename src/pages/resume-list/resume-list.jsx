@@ -10,7 +10,7 @@ export default function resumeList() {
   const getData = async () => {
     const res = await getAllResume();
     if (res.status === 200) {
-      setData(res.data);
+      setData(res.data.resumes);
     }
   };
   useEffect(() => {

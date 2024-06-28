@@ -1,11 +1,10 @@
 import React from "react";
 import { Form, Input, Button, Space, Divider, DatePicker } from "antd";
 import { Formik, Field, FieldArray } from "formik";
-import { getDataFromCookie , deleteDataFromCookie } from "@token-service";
+import { getDataFromCookie, deleteDataFromCookie } from "@token-service";
 import useCreateStore from "../../store/create";
 import { Header } from "@ui";
 import { useNavigate } from "react-router-dom";
-
 
 const basic_redis_id = getDataFromCookie("basic-id");
 const main_redis_id = getDataFromCookie("main-id");
@@ -34,7 +33,7 @@ const initialValues = {
       language: "",
     },
   ],
-  main_redis_id:main_redis_id,
+  main_redis_id: main_redis_id,
   meta: {
     lang: "en",
     template: "",
@@ -48,27 +47,21 @@ const initialValues = {
   ],
 };
 
-
-console.log(basic_redis_id)
-
 const App = () => {
   const { FinalResume } = useCreateStore();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-
-    values.meta.template = template 
-    // values.certificates.date = values.certificates.date.slice(1,10)
+    values.meta.template = template;
 
     try {
-
       const res = await FinalResume(values);
-      if(res.status === 200){
-        deleteDataFromCookie("basic-id")
-        deleteDataFromCookie("main-id")
-        deleteDataFromCookie("type")
-        navigate("/")
-        window.open(`${res.data}`, '_blank');
+      if (res.status === 200) {
+        deleteDataFromCookie("basic-id");
+        deleteDataFromCookie("main-id");
+        deleteDataFromCookie("type");
+        navigate("/");
+        window.open(`${res.data}`, "_blank");
       }
       console.log(res);
       console.log(values);
@@ -99,21 +92,22 @@ const App = () => {
                         name={`certificates[${index}].title`}
                         as={Input}
                         placeholder="Title"
-                        className="w-[250px]"
+                        className="w-[250px] h-[40px]"
                       />
                       <Field
                         name={`certificates[${index}].issuer`}
                         as={Input}
                         placeholder="Issuer"
-                        className="w-[250px]"
+                        className="w-[250px] h-[40px]"
                       />
                       <Field
                         name={`certificates[${index}].date`}
-                        className="w-[250px]"
+                        className="w-[250px] h-[40px]"
                         render={({ field }) => (
                           <DatePicker
                             {...field}
                             placeholder="Select Date"
+                            className="h-[40px]"
                             onChange={(date) =>
                               setFieldValue(`certificates[${index}].date`, date)
                             }
@@ -124,13 +118,13 @@ const App = () => {
                         name={`certificates[${index}].score`}
                         as={Input}
                         placeholder="Score"
-                        className="px-5"
+                        className="w-[250px] h-[40px]"
                       />
                       <Field
                         name={`certificates[${index}].url`}
                         as={Input}
                         placeholder="URL"
-                        className="w-[250px]"
+                        className="w-[250px] h-[40px]"
                       />
                       <Button
                         onClick={() => remove(index)}
@@ -183,11 +177,13 @@ const App = () => {
                         name={`languages[${index}].language`}
                         as={Input}
                         placeholder="Language"
+                        className="w-[250px] h-[40px]"
                       />
                       <Field
                         name={`languages[${index}].fluency`}
                         as={Input}
                         placeholder="Fluency"
+                        className="w-[250px] h-[40px]"
                       />
                       <Button
                         onClick={() => remove(index)}
@@ -212,6 +208,106 @@ const App = () => {
                     className="mb-5 mt-3"
                   >
                     Add Language
+                  </Button>
+                </>
+              )}
+            </FieldArray>
+
+            {/* Skills Section */}
+            <FieldArray name="skills">
+              {({ push, remove }) => (
+                <>
+                  <Divider orientation="left">Skills</Divider>
+                  {values.skills.map((_, index) => (
+                    <Space
+                      key={index}
+                      style={{ display: "flex", marginBottom: 8 }}
+                      align="baseline"
+                      className="flex-wrap"
+                    >
+                      <Field
+                        name={`skills[${index}].name`}
+                        as={Input}
+                        placeholder="Skill Name"
+                        className="w-[250px] h-[40px]"
+                      />
+                      <Field
+                        name={`skills[${index}].level`}
+                        as={Input}
+                        placeholder="Level"
+                        className="w-[250px] h-[40px]"
+                      />
+                      <FieldArray name={`skills[${index}].keywords`}>
+                        {({ push, remove }) => (
+                          <div className="flex items-center">
+                            {values.skills[index].keywords.map((_, kIndex) => (
+                              <Space
+                                key={kIndex}
+                                style={{ display: "flex", marginBottom: 8 }}
+                                align="baseline"
+                              >
+                                <Field
+                                  name={`skills[${index}].keywords[${kIndex}]`}
+                                  as={Input}
+                                  placeholder="Keyword"
+                                  className="w-[250px] h-[40px]"
+                                />
+                                <Button
+                                  onClick={() => remove(kIndex)}
+                                  type="primary"
+                                  danger
+                                  style={{
+                                    backgroundColor: "#ff445c",
+                                    borderColor: "#ff445c",
+                                  }}
+                                >
+                                  Remove Keyword
+                                </Button>
+                              </Space>
+                            ))}
+                            <Button
+                              type="primary"
+                              className="mb-2 ml-2"
+                              style={{
+                                backgroundColor: "#ff445c",
+                                borderColor: "#ff445c",
+                              }}
+                              onClick={() => push("")}
+                            >
+                              Add Keyword
+                            </Button>
+                          </div>
+                        )}
+                      </FieldArray>
+                      <Button
+                        onClick={() => remove(index)}
+                        type="primary"
+                        style={{
+                          backgroundColor: "#ff445c",
+                          borderColor: "#ff445c",
+                        }}
+                        danger
+                      >
+                        Remove Skill
+                      </Button>
+                    </Space>
+                  ))}
+                  <Button
+                    type="primary"
+                    style={{
+                      backgroundColor: "#ff445c",
+                      borderColor: "#ff445c",
+                    }}
+                    className="mb-5"
+                    onClick={() =>
+                      push({
+                        name: "",
+                        level: "",
+                        keywords: [""],
+                      })
+                    }
+                  >
+                    Add Skill
                   </Button>
                 </>
               )}
