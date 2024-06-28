@@ -36,7 +36,7 @@ const GlobalTable = ({ data, onDelete }) => {
       title: "Action",
       key: "action",
       render: (text, record) => (
-        <Button onClick={() => onDelete(record.id)} type="primary" danger>
+        <Button onClick={() => onDelete(record?.id)} type="primary" danger>
           Delete
         </Button>
       ),
@@ -46,7 +46,7 @@ const GlobalTable = ({ data, onDelete }) => {
   return (
     <div style={{ padding: "20px" }}>
       <Table
-        dataSource={data.map((item, index) => ({ ...item, key: index }))}
+        dataSource={data?.map((item, index) => ({ ...item, key: index }))}
         columns={columns}
         pagination={false}
       />

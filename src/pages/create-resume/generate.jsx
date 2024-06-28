@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Space, Divider, DatePicker } from "antd";
 import { Formik, Field, FieldArray } from "formik";
-import { getDataFromCookie } from "@token-service";
+import { getDataFromCookie , deleteDataFromCookie } from "@token-service";
 import useCreateStore from "../../store/create";
 import { Header } from "@ui";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ const initialValues = {
   main_redis_id:main_redis_id,
   meta: {
     lang: "en",
-    template: template,
+    template: "",
   },
   skills: [
     {
@@ -57,9 +57,17 @@ const App = () => {
 
   const onSubmit = async (values) => {
 
+    values.meta.template = template 
+    // values.certificates.date = values.certificates.date.slice(1,10)
+
     try {
+
       const res = await FinalResume(values);
       if(res.status === 200){
+        deleteDataFromCookie("basic-id")
+        deleteDataFromCookie("main-id")
+        deleteDataFromCookie("type")
+        navigate("/")
         window.open(`${res.data}`, '_blank');
       }
       console.log(res);
